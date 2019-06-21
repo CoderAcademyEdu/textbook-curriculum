@@ -145,7 +145,6 @@ You can verify the settings by running `gcloud config list`
 $ gcloud config list
 [compute]
 region = us-central1-c
-zone = us-central1-c
 [core]
 account = <YOUR EMAIL ADDRESS>
 disable_usage_reporting = False
@@ -277,7 +276,15 @@ beta_settings:
 
 Next grant the cloudbuild service account to run commands on the database server.
 
-First retrieve your project  number with:
+
+
+```bash
+$ gcloud beta iam service-accounts create [NAME_GOES_HERE] --description "A service account for our sample rails app"
+```
+
+You may need to download another component of the Google Cloud cli and enable the IAM (Identity management) API.  
+
+Second retrieve your project  number with:
 
 ```bash
 $ gcloud projects list
@@ -311,9 +318,9 @@ $  gcloud app deploy
 
 Press `y` to continue and Google will begin publishing the app.  
 
- Then get a cup of coffee and wait.  This should take up to 10 minutes.
+ Then get a cup of coffee and wait.  This should take up to 10 minutes.  You might need to repeat the command.
 
- Once the app is deployed you can bring it up with
+ Once the app is deployed you can bring it up with:
 
  `gcloud app browse`
 
