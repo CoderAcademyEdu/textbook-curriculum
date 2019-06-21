@@ -109,6 +109,14 @@ It will open a browser window and ask you to choose an account and authorize the
 
 ![authorize the google sdk](assets/authorize-sdk.png)
 
+### Set Current project
+
+Next set the current project the Google Cloud cli is working with.
+
+```bash
+$ gcloud config set project <PROJECT_ID>
+```
+
 ## Creating a Cloud SQL Instance
 
 Next we will create a server running Postgres for our deployed application to store data on.  
