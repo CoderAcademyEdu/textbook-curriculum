@@ -109,14 +109,6 @@ It will open a browser window and ask you to choose an account and authorize the
 
 ![authorize the google sdk](assets/authorize-sdk.png)
 
-### Set Current project
-
-Next set the current project the Google Cloud cli is working with.
-
-```bash
-$ gcloud config set project <PROJECT_ID>
-```
-
 ## Creating a Cloud SQL Instance
 
 Next we will create a server running Postgres for our deployed application to store data on.  
@@ -125,7 +117,11 @@ Next we will create a server running Postgres for our deployed application to st
 2. Then select a `PostgreSQL` database engine and click `next`.
 3. Give your instance the name `rails-database-instance`, the password `password` and the region `us-central1` and zone `us-central1-c`
 
-Then wait, it could take up to five minutes to complete.  We have configured a **database server**, but the server doesn't have a database ready for our app to use.  We will create one next.
+Then wait, it could take up to five minutes to complete.
+
+Get a coffee, check your email, make plans with your partner and come back to it. This is _mostly_ in jest.
+
+We have configured a **database server**, but the server doesn't have a database ready for our app to use.  We will create one next.
 
 1. When the instance is created, click on the instance ID to look at the details.  
 1. You will see a number of tabs, `Overview`, `Connections`, `Users`, `Databases` etc.  Click on the `Users` tab.
