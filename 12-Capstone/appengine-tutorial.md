@@ -56,13 +56,22 @@ It will take approximately 1-2 minutes to create the project.
 
 Next in the console select `Billing` and link your account to the project for billing.  
 
-You will receive the free credits, but will be required to add either a bank account or credit card.  
+You will receive the free credits, but will be required to add either a bank account or credit card. 
+
+## Updating the Google Cloud SDK
+
+Some of the options we will use are still in beta so we need to update the Cloud SDK (command line tools) with beta components.
+
+```bash
+$ gcloud components install beta
+$ gcloud components update
+```
 
 ## Turning on APIs
 
 To build a Rails project we will need to turn on the following APIs.  These APIs are turned off initially for security, but will allow the pieces of our Rails application to work together and allow you to manage your deployment from the command line.
 
-- Compute APIs - To run and access google virtual machines
+- Compute Engine API - To run and access google virtual machines
 - Cloud SQL Admin API - To allow us to access and set up a database server
 - Google App Engine Flexible Environment
 - App Engine Admin API
@@ -121,6 +130,8 @@ Then wait, it could take up to five minutes to complete.
 
 Get a coffee, check your email, make plans with your partner and come back to it. This is _mostly_ in jest.
 
+### Create Database
+
 We have configured a **database server**, but the server doesn't have a database ready for our app to use.  We will create one next.
 
 1. When the instance is created, click on the instance ID to look at the details.  
@@ -136,7 +147,7 @@ Now we will begin to create and deploy a rails application from the command line
 Then in the GCP CLI switch to the project and select the location `us-central1-c`.
 
 ```bash
-$  gcloud config set project rails-example
+$  gcloud config set project [Project ID]
 $  gcloud config set compute/region us-central1-c
 ```
 You can verify the settings by running `gcloud config list`
@@ -145,6 +156,7 @@ You can verify the settings by running `gcloud config list`
 $ gcloud config list
 [compute]
 region = us-central1-c
+zone = us-central1-a
 [core]
 account = <YOUR EMAIL ADDRESS>
 disable_usage_reporting = False
@@ -276,12 +288,6 @@ beta_settings:
 
 Next grant the cloudbuild service account to run commands on the database server.
 
-
-
-```bash
-$ gcloud beta iam service-accounts create [NAME_GOES_HERE] --description "A service account for our sample rails app"
-```
-
 You may need to download another component of the Google Cloud cli and enable the IAM (Identity management) API.  
 
 Second retrieve your project  number with:
@@ -318,7 +324,7 @@ $  gcloud app deploy
 
 Press `y` to continue and Google will begin publishing the app.  
 
- Then get a cup of coffee and wait.  This should take up to 10 minutes.  You might need to repeat the command.
+ Then get a cup of coffee and wait.  This should take up to 10 minutes.  You might need to repeat the command, if it fails to build.
 
  Once the app is deployed you can bring it up with:
 
